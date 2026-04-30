@@ -10,10 +10,10 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset( $_POST['kaydet'])){
     $tarih=$_POST['Deadline'];
     $onem=$_POST['Severity'];
 
-    try{ //SQL Injectiona karşı koruma hazırlığı
+    try{
         $sql="INSERT INTO gorevler (GorevAdi, DersAdi, Deadline, Severity, StatusHomework) VALUES (:baslik, :ders, :tarih, :onem, 0)";
         $sorgu=$baglanti->prepare($sql);
-        $sorgu->execute([   //güvenli veri eşleştirmesi
+        $sorgu->execute([
             ':baslik'=>$gorev,
             ':ders'=>$ders,
             ':tarih'=>$tarih,
